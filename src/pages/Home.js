@@ -7,7 +7,6 @@ import { getSchedule, getStations } from "../utils/api"
 
 const metros = require('../utils/metros.json')
 
-
 function Home() {
 
   const [metro, setMetro] = useState()
@@ -19,7 +18,7 @@ function Home() {
     if (selectedStation) {
       getSchedule(metro, selectedStation).then(schedules => {
         setSchedules(schedules)
-      }).catch(err => {
+      }).catch(() => {
         setSchedules()
       })
     }
@@ -63,18 +62,18 @@ function Home() {
         )}
       </div>
 
-      <div className={`${schedules ? 'h-full' : 'h-screen'} flex flex-col justify-start items-center w-3/5 py-12`} style={{ marginLeft: '40%' }}>
+      <div className="h-full flex flex-col justify-start items-center w-3/5 py-12" style={{ marginLeft: '40%' }}>
         <img src="/images/logo.svg" alt="logo ferway" />
         <div className="flex w-full items-center mt-16 flex-col">
           {(schedules && schedules.length > 1) ? schedules.map(({ destination, message }, i) => (
             <InfoMetro key={i} destination={destination} information={message} />
           )) : (
-            <p>Veuillez sélectionner une autre ligne de métro ! </p>
+            <Title text="Veuillez sélectionner une autre ligne de métro ! " />
           )
           }
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
