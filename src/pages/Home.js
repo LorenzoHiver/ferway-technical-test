@@ -19,6 +19,8 @@ function Home() {
     if (selectedStation) {
       getSchedule(metro, selectedStation).then(schedules => {
         setSchedules(schedules)
+      }).catch(err => {
+        setSchedules()
       })
     }
   }, [selectedStation])
