@@ -1,6 +1,6 @@
 import './index.css'
 
-function App() {
+function Home() {
 
   return (
     <div className="w-full h-screen bg-gray-100">
@@ -8,4 +8,4 @@ function App() {
   )
 }
 
-export default App
+export default Home
